@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Booking Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .car {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .car img {
+            width: 100px;
+            height: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form select, form button {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Car Booking Service</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#available-cars">Available Cars</a></li>
+                <li><a href="#booking-form">Book a Car</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container" id="home">
+        <h2>Welcome to Our Car Booking Service</h2>
+        <p>We offer a variety of cars to suit your needs. Browse our selection and book your car today!</p>
+    </div>
+
+    <div class="container" id="available-cars">
+        <h2>Available Cars</h2>
+        <div class="car">
+            <img src="car1.jpg" alt="Car 1">
+            <div>
+                <h3>Car Model 1</h3>
+                <p>Description of Car Model 1</p>
+            </div>
+        </div>
+        <div class="car">
+            <img src="car2.jpg" alt="Car 2">
+            <div>
+                <h3>Car Model 2</h3>
+                <p>Description of Car Model 2</p>
+            </div>
+        </div>
+        <!-- Add more cars as needed -->
+    </div>
+
+    <div class="container" id="booking-form">
+        <h2>Book a Car</h2>
+        <form id="bookingForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="car">Select Car:</label>
+            <select id="car" name="car" required>
+                <option value="car1">Car Model 1</option>
+                <option value="car2">Car Model 2</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <label for="date">Booking Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <div class="container" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@carbookingservice.com</p>
+        <p>Phone: +1234567890</p>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwFzlrMwf0q1WeEzbS_dYBsfrDVUkoXp4EgHveDBLwHzpTGJqVQx9yXKyx1SsGZs9XR/exec';
+        const form = document.forms['bookingForm'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert('Success! Your booking has been made.'))
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+</body>
+</html>
