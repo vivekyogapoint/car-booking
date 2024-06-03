@@ -42,7 +42,7 @@
             margin-bottom: 10px;
         }
         .car img {
-            width: 100px;
+            width: 150px;
             height: auto;
         }
         form {
@@ -78,17 +78,38 @@
     <div class="container" id="available-cars">
         <h2>Available Cars</h2>
         <div class="car">
-            <img src="Eartiga.jpeg" alt="Car 1">
+            <img src="Eartiga.jpeg" alt="Eartiga">
             <div>
                 <h3>Eartiga</h3>
                 <p>New Eartiga 6 seater</p>
             </div>
         </div>
         <div class="car">
-            <img src="desire.jpeg" alt="Car 2">
+            <img src="desire.jpeg" alt="Dzire">
             <div>
-                <h3>Desire</h3>
-                <p>4 seater desire car</p>
+                <h3>Dzire</h3>
+                <p>4 seater dZire car</p>
+            </div>
+        </div>
+        <div class="car">
+            <img src="kiacarens.jpeg" alt="Kia Caren">
+            <div>
+                <h3>kia Caren</h3>
+                <p>4 seater desire car AC/ Non AC</p>
+            </div>
+        </div>
+        <div class="car">
+            <img src="innovacrysta.jpeg" alt="innovacrysta">
+            <div>
+                <h3>Innova Crysta</h3>
+                <p>6 seater Innova car AC/ Non AC</p>
+            </div>
+        </div>
+        <div class="car">
+            <img src="tempo tranvells.jpeg" alt="tranvells">
+            <div>
+                <h3>Tempo travels</h3>
+                <p>13/17 seaters tempo travels AC/Non AC</p>
             </div>
         </div>
         <!-- Add more cars as needed -->
@@ -103,19 +124,21 @@
             <label for="phone">Phone Number*:</label>
             <input type="tel" id="phone" name="phone" required>
 
-
-            <!-- <label for="email">Email:</label>
-            <input type="email" id="email" name="email"> -->
-
             <label for="car">Select Car*:</label>
             <select id="car" name="car" required>
                 <option value="Eartiga">Eartiga</option>
-                <option value="Desire">Desire</option>
+                <option value="Dzire">Desire</option>
+                <option value="Kia Caren">Kia Caren</option>
+                <option value="Innova">Innova Crysta</option>
+                <option value="Tempo travels">Tempo travels</option>
                 <!-- Add more options as needed -->
             </select>
 
             <label for="date">Booking Date*:</label>
             <input type="date" id="date" name="date" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
 
             <button type="submit">Book Now</button>
         </form>
