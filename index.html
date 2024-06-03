@@ -221,37 +221,26 @@
         const form = document.forms['bookingForm'];
         const loader = document.getElementById('loader');
         const submitButton = form.querySelector('button[type="submit"]');
-        let selectedCar = '';
 
         // Add click event listener to each car
         document.querySelectorAll('.car').forEach(carDiv => {
             carDiv.addEventListener('click', () => {
-                const clickedCar = carDiv.getAttribute('data-car');
-                if (selectedCar !== clickedCar) {
-                    selectedCar = clickedCar;
-                    document.getElementById('car').value = selectedCar;
-                    window.location.hash = '#booking-form';
-                } else {
-                    alert('You have already selected this car.');
-                }
+                const selectedCar = carDiv.getAttribute('data-car');
+                document.getElementById('car').value = selectedCar;
+                window.location.hash = '#booking-form';
+                document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
             });
         });
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            if (!selectedCar) {
-                alert('Please select a car.');
-                return;
-            }
             submitButton.disabled = true;
             loader.style.display = 'block';
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
                     alert('Success! Your booking has been made, we will call you shortly');
                     loader.style.display = 'none';
                     submitButton.disabled = false;
-                    selectedCar = ''; // Reset selectedCar after successful submission
-                    document.getElementById('car').value = ''; // Reset selected car in the form
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
