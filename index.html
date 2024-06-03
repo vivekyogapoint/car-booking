@@ -38,7 +38,7 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
         .car {
@@ -46,13 +46,18 @@
             padding: 10px;
             border: 1px solid #ddd;
             display: grid;
-            grid-template-columns: 150px 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 10px;
+            align-items: center;
+            cursor: pointer;
         }
         .car img {
             width: 100%;
             height: auto;
             object-fit: cover;
+        }
+        .car div {
+            text-align: right;
         }
         form {
             display: flex;
@@ -62,6 +67,30 @@
             margin-bottom: 10px;
             padding: 10px;
             font-size: 16px;
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form button:disabled {
+            background-color: #007bff;
+            color: #ccc;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -87,35 +116,35 @@
     <div class="container" id="available-cars">
         <h2>Available Cars</h2>
         <div class="grid-container">
-            <div class="car">
+            <div class="car" data-car="Eartiga">
                 <img src="Eartiga.jpeg" alt="Eartiga">
                 <div>
                     <h3>Eartiga</h3>
                     <p>New Eartiga 6 seater</p>
                 </div>
             </div>
-            <div class="car">
+            <div class="car" data-car="Dzire">
                 <img src="desire.jpeg" alt="Dzire">
                 <div>
                     <h3>Dzire</h3>
                     <p>4 seater Dzire car</p>
                 </div>
             </div>
-            <div class="car">
-                <img src="kiacarens.jpeg" alt="Kia Caren">
+            <div class="car" data-car="Kia Caren">
+                <img src="caren.png" alt="Kia Caren">
                 <div>
                     <h3>Kia Caren</h3>
                     <p>6 seater desire car AC/ Non AC</p>
                 </div>
             </div>
-            <div class="car">
+            <div class="car" data-car="Innova Crysta">
                 <img src="innovacrysta.jpeg" alt="Innova Crysta">
                 <div>
                     <h3>Innova Crysta</h3>
                     <p>6 seater Innova car AC/ Non AC</p>
                 </div>
             </div>
-            <div class="car">
+            <div class="car" data-car="Tempo Travels">
                 <img src="tempo tranvells.jpeg" alt="Tempo Travels">
                 <div>
                     <h3>Tempo Travels</h3>
@@ -153,6 +182,7 @@
 
             <button type="submit">Book Now</button>
         </form>
+        <div class="loader" id="loader"></div>
     </div>
 
     <div class="container" id="contact">
@@ -165,12 +195,34 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbz75ce0ZWaOMxfX-KQVI9uJaCluKGeAB90v8UL2NpVp-r2VsuOLw6ZiutjQEMR39HEJ/exec';
         const form = document.forms['bookingForm'];
+        const loader = document.getElementById('loader');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        // Add click event listener to each car
+        document.querySelectorAll('.car').forEach(carDiv => {
+            carDiv.addEventListener('click', () => {
+                const selectedCar = carDiv.getAttribute('data-car');
+                document.getElementById('car').value = selectedCar;
+                window.location.hash = '#booking-form';
+                document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
         form.addEventListener('submit', e => {
             e.preventDefault();
+            submitButton.disabled = true;
+            loader.style.display = 'block';
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => alert('Success! Your booking has been made.'))
-                .catch(error => console.error('Error!', error.message));
+                .then(response => {
+                    alert('Success! Your booking has been made, we will call you shortly');
+                    loader.style.display = 'none';
+                    submitButton.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    loader.style.display = 'none';
+                    submitButton.disabled = false;
+                });
         });
     </script>
 </body>
