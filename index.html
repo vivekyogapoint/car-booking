@@ -36,14 +36,23 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
         .car {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
         }
         .car img {
-            width: 150px;
+            width: 100%;
             height: auto;
+            object-fit: cover;
         }
         form {
             display: flex;
@@ -71,48 +80,50 @@
 
     <div class="container" id="home">
         <h2>Welcome to Our Car Booking Service</h2>
-        <p> Pune - Mumbai - Pune </p>
-        <p> Anywhere oustation from Pune</p>
+        <p>Pune - Mumbai - Pune</p>
+        <p>Anywhere outstation from Pune</p>
     </div>
 
     <div class="container" id="available-cars">
         <h2>Available Cars</h2>
-        <div class="car">
-            <img src="Eartiga.jpeg" alt="Eartiga">
-            <div>
-                <h3>Eartiga</h3>
-                <p>New Eartiga 6 seater</p>
+        <div class="grid-container">
+            <div class="car">
+                <img src="Eartiga.jpeg" alt="Eartiga">
+                <div>
+                    <h3>Eartiga</h3>
+                    <p>New Eartiga 6 seater</p>
+                </div>
             </div>
-        </div>
-        <div class="car">
-            <img src="desire.jpeg" alt="Dzire">
-            <div>
-                <h3>Dzire</h3>
-                <p>4 seater dZire car</p>
+            <div class="car">
+                <img src="desire.jpeg" alt="Dzire">
+                <div>
+                    <h3>Dzire</h3>
+                    <p>4 seater Dzire car</p>
+                </div>
             </div>
-        </div>
-        <div class="car">
-            <img src="kiacarens.jpeg" alt="Kia Caren">
-            <div>
-                <h3>kia Caren</h3>
-                <p>6 seater desire car AC/ Non AC</p>
+            <div class="car">
+                <img src="kiacarens.jpeg" alt="Kia Caren">
+                <div>
+                    <h3>Kia Caren</h3>
+                    <p>6 seater desire car AC/ Non AC</p>
+                </div>
             </div>
-        </div>
-        <div class="car">
-            <img src="innovacrysta.jpeg" alt="innovacrysta">
-            <div>
-                <h3>Innova Crysta</h3>
-                <p>6 seater Innova car AC/ Non AC</p>
+            <div class="car">
+                <img src="innovacrysta.jpeg" alt="Innova Crysta">
+                <div>
+                    <h3>Innova Crysta</h3>
+                    <p>6 seater Innova car AC/ Non AC</p>
+                </div>
             </div>
-        </div>
-        <div class="car">
-            <img src="tempo tranvells.jpeg" alt="tranvells">
-            <div>
-                <h3>Tempo travels</h3>
-                <p>13/17 seaters tempo travels AC/Non AC</p>
+            <div class="car">
+                <img src="tempo tranvells.jpeg" alt="Tempo Travels">
+                <div>
+                    <h3>Tempo Travels</h3>
+                    <p>13/17 seaters tempo travels AC/Non AC</p>
+                </div>
             </div>
+            <!-- Add more cars as needed -->
         </div>
-        <!-- Add more cars as needed -->
     </div>
 
     <div class="container" id="booking-form">
@@ -127,17 +138,17 @@
             <label for="car">Select Car*:</label>
             <select id="car" name="car" required>
                 <option value="Eartiga">Eartiga</option>
-                <option value="Dzire">Desire</option>
+                <option value="Dzire">Dzire</option>
                 <option value="Kia Caren">Kia Caren</option>
-                <option value="Innova">Innova Crysta</option>
-                <option value="Tempo travels">Tempo travels</option>
+                <option value="Innova Crysta">Innova Crysta</option>
+                <option value="Tempo Travels">Tempo Travels</option>
                 <!-- Add more options as needed -->
             </select>
 
             <label for="date">Booking Date*:</label>
             <input type="date" id="date" name="date" required>
 
-            <label for="email">Email:</label>
+            <label for="email">Email (optional):</label>
             <input type="email" id="email" name="email">
 
             <button type="submit">Book Now</button>
@@ -146,8 +157,8 @@
 
     <div class="container" id="contact">
         <h2>Contact Us</h2>
-        <p>Phone / whatsapp: 9309967765 </p>
-        <p>Phone / whatsapp: 9665178993 </p>
+        <p>Phone / WhatsApp: 9309967765</p>
+        <p>Phone / WhatsApp: 9665178993</p>
         <p>Email: vivekyogaoint@gmail.com</p>
     </div>
 
