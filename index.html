@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,24 +12,29 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
             text-align: center;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
         }
+
         nav ul li {
             display: inline;
             margin-right: 10px;
         }
+
         nav ul li a {
             color: #fff;
             text-decoration: none;
         }
+
         .container {
             width: 80%;
             margin: 20px auto;
@@ -36,11 +42,13 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .grid-container {
             display: grid;
             grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
+
         .car {
             background-color: #f9f9f9;
             padding: 10px;
@@ -51,33 +59,42 @@
             align-items: center;
             cursor: pointer;
         }
+
         .car img {
             width: 100%;
             height: auto;
             object-fit: cover;
         }
+
         .car div {
             text-align: right;
         }
+
         form {
             display: flex;
             flex-direction: column;
         }
-        form input, form select, form button {
+
+        form input,
+        form select,
+        form button {
             margin-bottom: 10px;
             padding: 10px;
             font-size: 16px;
         }
+
         form button {
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         form button:disabled {
             background-color: #007bff;
             color: #ccc;
         }
+
         .loader {
             border: 4px solid #f3f3f3;
             border-radius: 50%;
@@ -88,12 +105,19 @@
             display: none;
             margin: 0 auto;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Soham Car Booking Service</h1>
@@ -187,8 +211,8 @@
 
     <div class="container" id="contact">
         <h2>Contact Us</h2>
-        <p>Phone / WhatsApp: 9309967765</p>
-        <p>Phone / WhatsApp: 9665178993</p>
+        <p>Phone / WhatsApp: <a href="tel:9309967765">9309967765</a></p>
+        <p>Phone / WhatsApp: <a href="tel:9665178993">9665178993</a></p>
         <p>Email: vivekyogaoint@gmail.com</p>
     </div>
 
@@ -197,26 +221,37 @@
         const form = document.forms['bookingForm'];
         const loader = document.getElementById('loader');
         const submitButton = form.querySelector('button[type="submit"]');
+        let selectedCar = '';
 
         // Add click event listener to each car
         document.querySelectorAll('.car').forEach(carDiv => {
             carDiv.addEventListener('click', () => {
-                const selectedCar = carDiv.getAttribute('data-car');
-                document.getElementById('car').value = selectedCar;
-                window.location.hash = '#booking-form';
-                document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+                const clickedCar = carDiv.getAttribute('data-car');
+                if (selectedCar !== clickedCar) {
+                    selectedCar = clickedCar;
+                    document.getElementById('car').value = selectedCar;
+                    window.location.hash = '#booking-form';
+                } else {
+                    alert('You have already selected this car.');
+                }
             });
         });
 
         form.addEventListener('submit', e => {
             e.preventDefault();
+            if (!selectedCar) {
+                alert('Please select a car.');
+                return;
+            }
             submitButton.disabled = true;
             loader.style.display = 'block';
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     alert('Success! Your booking has been made, we will call you shortly');
                     loader.style.display = 'none';
                     submitButton.disabled = false;
+                    selectedCar = ''; // Reset selectedCar after successful submission
+                    document.getElementById('car').value = ''; // Reset selected car in the form
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
@@ -224,6 +259,8 @@
                     submitButton.disabled = false;
                 });
         });
+
     </script>
 </body>
+
 </html>
