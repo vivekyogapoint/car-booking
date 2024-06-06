@@ -217,7 +217,7 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvwOERw5Y9cHt8EMEoiSyrTVWREoCOSRrpAdwUWMAkaDyHWdyXt7Vo_SrRig4z7CUA/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzl_ZG3Xem-CZj9CFSh1QvP2WG9Eyjqx9MdJJPygBmcBhPd9F1BLRVLxGlmdkzIeE3Z/exec';
         const form = document.forms['bookingForm'];
         const loader = document.getElementById('loader');
         const submitButton = form.querySelector('button[type="submit"]');
@@ -260,7 +260,7 @@
 
         // Validate phone number function
         function validatePhoneNumber(phone) {
-            const phoneRegex = /^[6-9]\d{9}$/;
+            const phoneRegex = /^\d{10}$/;
             return phoneRegex.test(phone);
         }
     </script>
