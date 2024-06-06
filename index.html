@@ -23,10 +23,11 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            display: inline;
             margin-right: 10px;
         }
 
@@ -36,7 +37,8 @@
         }
 
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 20px auto;
             background-color: #fff;
             padding: 20px;
@@ -45,7 +47,7 @@
 
         .grid-container {
             display: grid;
-            grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
@@ -53,9 +55,8 @@
             background-color: #f9f9f9;
             padding: 10px;
             border: 1px solid #ddd;
-            display: grid;
-            grid-template-columns: 50% 1fr;
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             cursor: pointer;
         }
@@ -67,7 +68,8 @@
         }
 
         .car div {
-            text-align: right;
+            text-align: center;
+            margin-top: 10px;
         }
 
         form {
@@ -113,6 +115,25 @@
 
             100% {
                 transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+            }
+
+            .car {
+                flex-direction: column;
+            }
+
+            .car div {
+                text-align: center;
             }
         }
     </style>
