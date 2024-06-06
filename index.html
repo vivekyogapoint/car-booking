@@ -243,6 +243,7 @@
                     submitButton.disabled = false;
                 })
                 .catch(error => {
+                    alert('Failed! please call us on below number' + error);
                     console.error('Error!', error.message);
                     loader.style.display = 'none';
                     submitButton.disabled = false;
