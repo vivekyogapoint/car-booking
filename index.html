@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,91 +11,73 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
             text-align: center;
         }
-
         nav ul {
             list-style-type: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
         }
-
         nav ul li {
+            display: inline;
             margin-right: 10px;
         }
-
         nav ul li a {
             color: #fff;
             text-decoration: none;
         }
-
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 80%;
             margin: 20px auto;
             background-color: #fff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
-
         .car {
             background-color: #f9f9f9;
             padding: 10px;
             border: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 10px;
             align-items: center;
             cursor: pointer;
         }
-
         .car img {
             width: 100%;
             height: auto;
             object-fit: cover;
         }
-
         .car div {
-            text-align: center;
-            margin-top: 10px;
+            text-align: right;
         }
-
         form {
             display: flex;
             flex-direction: column;
         }
-
-        form input,
-        form select,
-        form button {
+        form input, form select, form button {
             margin-bottom: 10px;
             padding: 10px;
             font-size: 16px;
         }
-
         form button {
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
         }
-
         form button:disabled {
             background-color: #007bff;
             color: #ccc;
         }
-
         .loader {
             border: 4px solid #f3f3f3;
             border-radius: 50%;
@@ -107,38 +88,12 @@
             display: none;
             margin: 0 auto;
         }
-
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin-bottom: 10px;
-            }
-
-            .car {
-                flex-direction: column;
-            }
-
-            .car div {
-                text-align: center;
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>Soham Car Booking Service</h1>
@@ -232,9 +187,9 @@
 
     <div class="container" id="contact">
         <h2>Contact Us</h2>
-        <p>Phone / WhatsApp: <a href="tel:9309967765">9309967765</a></p>
-        <p>Phone / WhatsApp: <a href="tel:9665178993">9665178993</a></p>
-        <p>Email: shitalbhure759@gmail.com</p>
+        <p>Phone / WhatsApp: 9309967765</p>
+        <p>Phone / WhatsApp: 9665178993</p>
+        <p>Email: vivekyogaoint@gmail.com</p>
     </div>
 
     <script>
@@ -264,14 +219,11 @@
                     submitButton.disabled = false;
                 })
                 .catch(error => {
-                    alert('Failed! please call us on below number' + error);
                     console.error('Error!', error.message);
                     loader.style.display = 'none';
                     submitButton.disabled = false;
                 });
         });
-
     </script>
 </body>
-
 </html>
